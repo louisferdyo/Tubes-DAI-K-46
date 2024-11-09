@@ -234,7 +234,7 @@ def geneticAlgorithm(cube, populationSize, maxIteration) :
         for i in range (len(newPopulation)) :
             newPopulation[i] = mutate(newPopulation[i], 0.1)
         indeks += 1
-        print(f"Best Objective : {lowestObjective}")
+        print(f"\nPada iterasi ke {indeks}, Best Objective : {lowestObjective}")
         population = newPopulation
     endTime = time.time()
     duration = endTime - startTime
@@ -373,7 +373,7 @@ printCube(cube)
 
 objectiveBefore = objectiveFunction(cube)
 
-finalCube, objectiveAfter, iterationSum, duration, bestCube = geneticAlgorithm(cube, 10, 100)
+finalCube, objectiveAfter, iterationSum, duration, bestCube = geneticAlgorithm(cube, 10, 10)
 
 
 
