@@ -29,19 +29,6 @@ def printCube(cube) :
     print()
     print("-----------------------------------------------")
     print("Sisi ke sumbu y")            
-    for k in range(5) :
-        print()
-        print()
-        print("----- Sisi ke-", k+1,"------")
-        for i in range (5) :
-            print()
-            for j in range (5) :
-                print(cube[i][j][k], "|" , end="")
-
-    print()
-    print()
-    print("-----------------------------------------------")
-    print("Sisi ke sumbu z")            
     for j in range(5) :
         print()
         print()
@@ -50,6 +37,22 @@ def printCube(cube) :
             print()
             for i in range (5) :
                 print(cube[i][j][k], "|" , end="")
+   
+
+    print()
+    print()
+    print("-----------------------------------------------")
+    print("Sisi ke sumbu z")            
+    for k in range(5) :
+        print()
+        print()
+        print("----- Sisi ke-", k+1,"------")
+        for i in range (5) :
+            print()
+            for j in range (5) :
+                print(cube[i][j][k], "|" , end="")
+    
+    
     return 0
 
 def objectiveFunction(cube) :
@@ -211,6 +214,7 @@ def geneticAlgorithm(cube, populationSize, maxIteration) :
             currentObjective = objectiveFunction(individu2)
             currentObjectives.append(currentObjective)
             if(currentObjective < lowestObjective) :
+                bestCube = copy.deepcopy(cube)
                 lowestObjective = currentObjective
             fitness = 1 / (1 + currentObjective)
             fitnessScore.append(fitness)
@@ -235,12 +239,12 @@ def geneticAlgorithm(cube, populationSize, maxIteration) :
     endTime = time.time()
     duration = endTime - startTime
     plotObjectiveFunction(maxObjectivePerIteration, averageObjectivePerIteration)
-    return cube, lowestObjective, indeks, duration
+    return cube, lowestObjective, indeks, duration, bestCube
 
 def mutate(individu, mutationRate) :
     indexTochange = 0
     if(random.random() < mutationRate) :
-        print("\nMutasi Dilakukan\n")
+        # print("\nMutasi Dilakukan\n")
         mutationIndex = random.randint(0, len(individu) - 1)
         
         newValue = random.randint(1, 125)
@@ -253,8 +257,9 @@ def mutate(individu, mutationRate) :
         individu[indexTochange] = temp
         # print(f"indeks yang berubah yaitu {mutationIndex} dan indeks yang terdampak yaitu {indexTochange}")
         # print(f"Nilai yang diubah menjadi {newValue} dan nilai yang berubah yaitu {temp}")
-    else :
-        print("\nMutasi Gagal Dilakukan\n")
+    # else :
+    #     # print("\nMutasi Gagal Dilakukan\n")
+
     return individu
 
 def spinWheelSelection(population, wheelRange) :
@@ -368,17 +373,20 @@ printCube(cube)
 
 objectiveBefore = objectiveFunction(cube)
 
-finalCube, objectiveAfter, iterationSum, duration = geneticAlgorithm(cube, 3, 5)
+finalCube, objectiveAfter, iterationSum, duration, bestCube = geneticAlgorithm(cube, 10, 100)
 
 
 
 print("-------------------------------------------------------------------------------")
+print("State cube terakhir")
 printCube(finalCube)
 
 print(f" \n\nobjective function sebelum yaitu {objectiveBefore}")
-print(f"\nobjective function setelah {objectiveAfter} \n")
 print(f"\njumlah iterasi yang dilakukan adalah {iterationSum} \n")
-print("waktu = ", duration)
+print(f"\nobjective function terbaik adalah {objectiveAfter} \n")
+print(f"\nState Cube yang terbaik yaitu \n")
+printCube(bestCube)
+print("\nwaktu = ", duration)
 # population = []
 # populationSize = 5
 # population = generateRandomPopulation(populationSize)
