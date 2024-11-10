@@ -299,7 +299,7 @@ def crossOver(populationSize, population) :
     x = random.randint(0,populationSize-1)
     y = random.randint(0,populationSize-1)
     if(populationSize == 1) :
-        print("Populasi haya satu, tidak bisa crossover")
+        print("Populasi hanya satu, tidak bisa crossover")
         return None
     else :
         while(x == y) :
