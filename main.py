@@ -49,7 +49,8 @@ if pilihan == 1:
         print("\n-) waktu =", duration)
         
     elif h == 2:
-        finalCube, iterationSum, duration, sidewaysSum = sidewaysMove(cube, 10)
+        maxSide = int(input("\n Masukkan jumlah ideways Move maksimal : "))
+        finalCube, iterationSum, duration, sidewaysSum = sidewaysMove(cube, maxSide)
         printCube(finalCube)
         p2 = objectiveFunction(finalCube)
         print("\n\nKeterangan : ")
@@ -59,7 +60,8 @@ if pilihan == 1:
         print("\n-) waktu =", duration)
         
     elif h == 3:
-        finalCube, restartCount, iterationPerRestart, duration = randomRestart(cube, 10)
+        maxRes = int(input("\n Masukkan jumlah restart maksimal : "))
+        finalCube, restartCount, iterationPerRestart, duration = randomRestart(cube, maxRes)
         printCube(finalCube)
         p2 = objectiveFunction(finalCube)
         print("\n\nKeterangan : ")
@@ -69,7 +71,8 @@ if pilihan == 1:
         print("\n-) waktu =", duration)
         
     elif h == 4:
-        finalCube, duration, iterationSum = stochastic(cube, 10)
+        maxIterate = int(input("\n Masukkan jumlah iterai maksimal : "))
+        finalCube, duration, iterationSum = stochastic(cube, maxIterate)
         printCube(finalCube)
         p2 = objectiveFunction(finalCube)
         print("\n\nKeterangan : ")
@@ -78,7 +81,10 @@ if pilihan == 1:
         print("\n-) waktu =", duration)
 
 elif pilihan == 2:
-    finalCube, stuck, duration = simulatedAnnealing(cube, 10, 0.5, 5)
+    temp = int(input("\n Masukkan Temperature awal : "))
+    coolRate = int(input("\n Masukkan koefisien penurunan temperatur : "))
+    thres = int(input("\n Masukkan batas probabilitas (parameter pertukaran state pada perhitungan deltaE / T) : "))
+    finalCube, stuck, duration = simulatedAnnealing(cube, temp, coolRate, thres)
     printCube(finalCube)
     p2 = objectiveFunction(finalCube)
     print(f"\n\nKeterangan : ")
@@ -87,7 +93,9 @@ elif pilihan == 2:
     print("\n-) waktu =", duration)
 
 elif pilihan == 3:
-    finalCube, objectiveAfter, iterationSum, duration, bestCube, lastMin, lastAvg = geneticAlgorithm(cube, 3, 10)
+    populasi = int(input("\n Masukkan jumlah populasi : "))
+    maxIterasi = int(input("\n Masukkan jumlah iterasi maksimal: "))
+    finalCube, objectiveAfter, iterationSum, duration, bestCube, lastMin, lastAvg = geneticAlgorithm(cube, populasi, maxIterasi)
     print("\n\nState cube terakhir")
     printCube(finalCube)
 
