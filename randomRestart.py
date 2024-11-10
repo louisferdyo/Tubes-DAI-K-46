@@ -194,12 +194,13 @@ def randomRestart(cube, maxRestart) :
         if(neigborValue < currentValue) :
             cube = neigborCube
             i += 1 
-        elif (restartCount < maxRestart and neigborValue >= currentValue) :
+        elif (restartCount < maxRestart and neigborValue >= currentValue and currentValue!=0) :
             cube = initialStateRandom(cube)
             restartCount += 1
             iterationSum.append(i)
             i = 0
         else :
+            iterationSum.append(i)
             condition = False
     endTime = time.time()
     duration = endTime - startTime  
