@@ -189,8 +189,10 @@ def simulatedAnnealing(cube, T, coolingRate, threshold) :
     objectiveValues = [] 
     deltaEValues = []
     while T > 0: 
+        T -= coolingRate # penurunan temperatur dilakukan dengan dikurangi koefisien penurunan
         print("\nT : ", T)
         if T <= 0 :
+            print("Temperatur = 0")
             break
        
         i += 1
@@ -220,7 +222,7 @@ def simulatedAnnealing(cube, T, coolingRate, threshold) :
             else :
                 print("Probability lower than threshold, Nothing changed")
                 stuck += 1
-        T -= coolingRate # penurunan temperatur dilakukan dengan dikurangi koefisien penurunan
+        
         # print("hasil akhir : ", objectiveFunction(cube))
     endTime = time.time()
     duration = endTime - startTime

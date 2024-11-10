@@ -306,13 +306,13 @@ def crossOver(populationSize, population) :
             y = random.randint(0,populationSize-1)
             # print(f"y: {y}")
     
-    length = len(population[x])
-    crossoverPoint = random.randint(1, length - 1)  # Titik crossover acak dimula dari 1 untuk menghindari crossover seluruh array
+        length = len(population[x])
+        crossoverPoint = random.randint(1, length - 1)  # Titik crossover acak dimula dari 1 untuk menghindari crossover seluruh array
 
-    # Buat child dengan melakukan crossover
-    child = population[x][:crossoverPoint] + population[y][crossoverPoint:]
-        
-    return child
+        # Buat child dengan melakukan crossover
+        child = population[x][:crossoverPoint] + population[y][crossoverPoint:]
+            
+        return child
 
 def printPopulationDefault(population):
     for i in range(len(population)) :
