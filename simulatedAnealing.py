@@ -189,11 +189,12 @@ def simulatedAnnealing(cube, T, coolingRate, threshold) :
     objectiveValues = [] 
     deltaEValues = []
     while T > 0: 
-        T -= coolingRate # penurunan temperatur dilakukan dengan dikurangi koefisien penurunan
-        i += 1
+        print("\nT : ", T)
         if T <= 0 :
             break
-        print("\nT : ", T)
+       
+        i += 1
+        print("Next T : ", T-coolingRate)
         currentValue = objectiveFunction(cube)
         objectiveValues.append(currentValue)
         cubeTemp = copy.deepcopy(cube)
@@ -204,20 +205,22 @@ def simulatedAnnealing(cube, T, coolingRate, threshold) :
         
         print("current : " , currentValue, " next : ", nextValue)
         deltaE = nextValue - currentValue
-        print("delta = ", deltaE)
+        print("delta E = ", deltaE)
         
         if(deltaE < 0) : # karena yang lebih kecil dari 0 artinya next value lebih kecil dari current yang artinya mengurangi error
             cube = cube2
-            print("less than 0")
+            print("DeltaE less than 0, Swap Element")
         else : 
             prob = math.exp(-deltaE/ T) # karena error harus lebih kecil maka dikali -1
             deltaEValues.append(prob)
             print("prob = ", prob)
             if(prob > threshold) : 
                 cube = cube2
-                print("swapped")
+                print("Probability more than threshold, Swapped")
             else :
+                print("Probability lower than threshold, Nothing changed")
                 stuck += 1
+        T -= coolingRate # penurunan temperatur dilakukan dengan dikurangi koefisien penurunan
         # print("hasil akhir : ", objectiveFunction(cube))
     endTime = time.time()
     duration = endTime - startTime
@@ -267,25 +270,25 @@ def plotObjectiveFunction(objectiveValues, deltaEValues):
 #     print("output1 : ", coor1, " coor2 : ", coor2)
 
 
-cube = makeCube()
+# cube = makeCube()
 
-print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
+# print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
 
-initialStateRandom(cube)
-printCube(cube)
+# initialStateRandom(cube)
+# printCube(cube)
 
-p1 = objectiveFunction(cube)
-
-
-finalCube, stuck, duration = simulatedAnnealing(cube, 10, 0.5, 5)
+# p1 = objectiveFunction(cube)
 
 
-print("-------------------------------------------------------------------------------")
-printCube(finalCube)
+# finalCube, stuck, duration = simulatedAnnealing(cube, 10, 0.5, 5)
 
-p2 = objectiveFunction(finalCube)
 
-print("\nobjective function awal = ", p1)
-print("\nobjective function akhir = ", p2)
-print("\nfrekuensi terkena stuck yaitu = ", stuck)
-print("waktu = ", duration)
+# print("-------------------------------------------------------------------------------")
+# printCube(finalCube)
+
+# p2 = objectiveFunction(finalCube)
+
+# print("\nobjective function awal = ", p1)
+# print("\nobjective function akhir = ", p2)
+# print("\nfrekuensi terkena stuck yaitu = ", stuck)
+# print("waktu = ", duration)

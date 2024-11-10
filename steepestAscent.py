@@ -15,6 +15,9 @@ def makeCube():
     return cube
     
 def printCube(cube) :
+    print("\n\nSisi Magic Cube yang dilihat dari sumbu x, y, z")
+    print()
+    print("-----------------------------------------------")
     print("Sisi ke sumbu x")
     for i in range(5) :
         print()
@@ -215,24 +218,24 @@ def plotObjectiveFunction(objectiveValues):
 
 #----------------------------------------------------------------------------------------
 
-cube = makeCube()
+# cube = makeCube()
 
-print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
+# print("\n\n\n------------------------------------------------------------------------\n\n")
 
-initialStateRandom(cube)
-printCube(cube)
+# initialStateRandom(cube)
+# printCube(cube)
 
-p1 = objectiveFunction(cube)
-print("\nobjective function awal = ", p1)
-
-
-finalCube, iterationSum, duration = steepestAscent(cube)
+# p1 = objectiveFunction(cube)
+# print("\nobjective function awal = ", p1)
 
 
-print("-------------------------------------------------------------------------------")
-printCube(finalCube)
+# finalCube, iterationSum, duration = steepestAscent(cube)
 
-p2 = objectiveFunction(finalCube)
-print("\nobjective function akhir = ", p2)
-print("\nbanyaknya iterasi yang dilakukan = ", iterationSum)
-print("waktu = ", duration)
+
+# print("-------------------------------------------------------------------------------")
+# printCube(finalCube)
+
+# p2 = objectiveFunction(finalCube)
+# print("\nobjective function akhir = ", p2)
+# print("\nbanyaknya iterasi yang dilakukan = ", iterationSum)
+# print("waktu = ", duration)

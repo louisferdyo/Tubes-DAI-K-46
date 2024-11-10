@@ -222,23 +222,23 @@ def plotObjectiveFunction(objectiveValues):
 
 #----------------------------------------------------------------------------------------
 
-cube = makeCube()
-printCube(cube)
+# cube = makeCube()
+# printCube(cube)
 
-print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
+# print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
 
-initialStateRandom(cube)
-printCube(cube)
+# initialStateRandom(cube)
+# printCube(cube)
 
-p1 = objectiveFunction(cube)
-print("\nobjective function awal = ", p1)
-
-
-finalCube, restartCount, iterationPerRestart, duration = randomRestart(cube, 10)
+# p1 = objectiveFunction(cube)
+# print("\nobjective function awal = ", p1)
 
 
-p2 = objectiveFunction(finalCube)
-print("\nobjective function akhir = ", p2)
-print("waktu = ", duration)
-print(f"Cube di restart sebanyak {restartCount}")
-print(f"Iterasi setiap restart adalah sebagai berikut {iterationPerRestart}")
+# finalCube, restartCount, iterationPerRestart, duration = randomRestart(cube, 10)
+
+
+# p2 = objectiveFunction(finalCube)
+# print("\nobjective function akhir = ", p2)
+# print("waktu = ", duration)
+# print(f"Cube di restart sebanyak {restartCount}")
+# print(f"Iterasi setiap restart adalah sebagai berikut {iterationPerRestart}")

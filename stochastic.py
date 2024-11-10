@@ -200,7 +200,7 @@ def stochastic(cube, maxIteration) :
     endTime = time.time()
     duration = endTime - startTime
     plotObjectiveFunction(objectiveValues)
-    return cube, duration
+    return cube, duration, i
 
 def plotObjectiveFunction(objectiveValues):
     plt.figure(figsize=(10, 6))
@@ -231,24 +231,24 @@ def plotObjectiveFunction(objectiveValues):
 #     print("output1 : ", coor1, " coor2 : ", coor2)
 
 
-cube = makeCube()
+# cube = makeCube()
 
-print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
+# print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
 
-initialStateRandom(cube)
-printCube(cube)
+# initialStateRandom(cube)
+# printCube(cube)
 
-p1 = objectiveFunction(cube)
-
-
-finalCube, duration = stochastic(cube, 10)
+# p1 = objectiveFunction(cube)
 
 
-print("-------------------------------------------------------------------------------")
-printCube(finalCube)
+# finalCube, duration = stochastic(cube, 10)
 
-p2 = objectiveFunction(finalCube)
 
-print("\nobjective function awal = ", p1)
-print("\nobjective function akhir = ", p2)
-print("waktu = ", duration)
+# print("-------------------------------------------------------------------------------")
+# printCube(finalCube)
+
+# p2 = objectiveFunction(finalCube)
+
+# print("\nobjective function awal = ", p1)
+# print("\nobjective function akhir = ", p2)
+# print("waktu = ", duration)

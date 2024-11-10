@@ -199,7 +199,7 @@ def geneticAlgorithm(cube, populationSize, maxIteration) :
     indeks = 0
     population = []
     population = generateRandomPopulation(populationSize)
-    maxObjectivePerIteration = []
+    minObjectivePerIteration = []
     averageObjectivePerIteration = []
     while(indeks < maxIteration and lowestObjective > 0) :
         fitnessScore = []
@@ -207,39 +207,56 @@ def geneticAlgorithm(cube, populationSize, maxIteration) :
         fitnessPercentage = []
         wheelRange = []
         newPopulation = []
-        currentObjectives = []
+        objectives = []
         sumPercentage = 0
+        currentObjectives = []
         for i in range (populationSize) :
             individu2 = convertTo3D(population[i])
-            currentObjective = objectiveFunction(individu2)
-            currentObjectives.append(currentObjective)
-            if(currentObjective < lowestObjective) :
-                bestCube = copy.deepcopy(cube)
-                lowestObjective = currentObjective
-            fitness = 1 / (1 + currentObjective)
+            objective = objectiveFunction(individu2)
+            objectives.append(objective)
+            fitness = 1 / (1 + objective)
             fitnessScore.append(fitness)
             fitnessSum += fitness
-        maxObjectivePerIteration.append(max(currentObjectives))
-        averageObjectivePerIteration.append(sum(currentObjectives) / populationSize)
+        # print(f"\nPada iterasi ke {indeks+1}, Nilai Objective dari populasi awal adalah: {objectives}\n")
         for i in range (len(fitnessScore)) :
             fitnessPercent = (fitnessScore[i] / fitnessSum) * 100
             sumPercentage += fitnessPercent
             wheelRange.append(sumPercentage)
             fitnessPercentage.append(fitnessPercent)
+        # print(wheelRange)
         parent = spinWheelSelection(population, wheelRange)
+        # for i in range (populationSize) :
+        #     parents = convertTo3D(parent[i])
+        #     p = objectiveFunction(parents)
+        #     print(f"obj {i+1} = {p}")
+
         for i in range (populationSize) :
             child = crossOver(populationSize, parent)
             if(child != None) :
                 newPopulation.append(child)
         for i in range (len(newPopulation)) :
             newPopulation[i] = mutate(newPopulation[i], 0.1)
+            individu2 = convertTo3D(newPopulation[i])
+            currentObjective = objectiveFunction(individu2)
+            currentObjectives.append(currentObjective)
+            if(currentObjective < lowestObjective) :
+                bestCube = copy.deepcopy(cube)
+                lowestObjective = currentObjective
+        print(f"\nPada iterasi ke {indeks+1}, Nilai Objective dari child adalah: {currentObjectives}")
+        print(f"\nPada iterasi ke {indeks+1}, Best Objective : {lowestObjective}")
+        minObjectivePerIteration.append(min(currentObjectives))
+        averageObjectivePerIteration.append(sum(currentObjectives) / populationSize)
         indeks += 1
-        print(f"\nPada iterasi ke {indeks}, Best Objective : {lowestObjective}")
+        
         population = newPopulation
+        
+
     endTime = time.time()
     duration = endTime - startTime
-    plotObjectiveFunction(maxObjectivePerIteration, averageObjectivePerIteration)
-    return cube, lowestObjective, indeks, duration, bestCube
+    plotObjectiveFunction(minObjectivePerIteration, averageObjectivePerIteration)
+    lastMinElement = minObjectivePerIteration[-1]
+    lastAvgElement = averageObjectivePerIteration[-1]
+    return cube, lowestObjective, indeks, duration, bestCube, lastMinElement, lastAvgElement
 
 def mutate(individu, mutationRate) :
     indexTochange = 0
@@ -276,7 +293,6 @@ def spinWheelSelection(population, wheelRange) :
                 if(randomValue >= wheelRange[j-1] and randomValue < wheelRange[j]) :
                     parent.append(population[j])
                     break
-    
     return parent
 
 def crossOver(populationSize, population) :
@@ -355,9 +371,9 @@ def printIndividuAsCube(individu):
                     print(f"{individu[index]:3}", "|", end="")
         print("\n" + "-" * 50)
 
-def plotObjectiveFunction(maxObjective, averageObjective):
+def plotObjectiveFunction(minObjective, averageObjective):
     plt.figure(figsize=(10, 6))
-    plt.plot(range(1, len(maxObjective) + 1), maxObjective, label='Maksimum Objective Function')
+    plt.plot(range(1, len(minObjective) + 1), minObjective, label='Minimum Objective Function')
     plt.plot(range(1, len(averageObjective) + 1), averageObjective, label='Rata-rata Objective Function')
     plt.xlabel('Iterasi')
     plt.ylabel('Nilai Objective Function')
@@ -365,28 +381,36 @@ def plotObjectiveFunction(maxObjective, averageObjective):
     plt.legend()
     plt.grid(True)
     plt.show()  
-# Main
+# # Main
 
-cube = makeCube()
-initialStateRandom(cube)
-printCube(cube)
+# cube = makeCube()
+# initialStateRandom(cube)
 
-objectiveBefore = objectiveFunction(cube)
+# objectiveBefore = objectiveFunction(cube)
 
-finalCube, objectiveAfter, iterationSum, duration, bestCube = geneticAlgorithm(cube, 10, 10)
+# finalCube, objectiveAfter, iterationSum, duration, bestCube, lastMin, lastAvg = geneticAlgorithm(cube, 3, 10)
+# print("\n\nKeterangan : ")
+# print(f"\n-) objective function terendah dari populasi terakhir adalah {lastMin}\n")
+# print(f"-) ojective function rata-rata dari populasi terakhir adalah {lastAvg}\n")
+# print(f"-) objective function terbaik dari seluruh populasi adalah {objectiveAfter}\n")
+# print(f"-) jumlah iterasi yang dilakukan adalah {iterationSum}\n")
+# print("-) waktu =", duration)
+
+
+# print("-------------------------------------------------------------------------------")
+# print("State cube terakhir")
+# printCube(finalCube)
+
+# print(f" \n\nobjective function sebelum yaitu {objectiveBefore}")
+# print(f"\njumlah iterasi yang dilakukan adalah {iterationSum} \n")
+# print(f"\nobjective function terbaik adalah {objectiveAfter} \n")
+# print(f"\nState Cube yang terbaik yaitu \n")
+# printCube(bestCube)
+# print("\nwaktu = ", duration)
 
 
 
-print("-------------------------------------------------------------------------------")
-print("State cube terakhir")
-printCube(finalCube)
 
-print(f" \n\nobjective function sebelum yaitu {objectiveBefore}")
-print(f"\njumlah iterasi yang dilakukan adalah {iterationSum} \n")
-print(f"\nobjective function terbaik adalah {objectiveAfter} \n")
-print(f"\nState Cube yang terbaik yaitu \n")
-printCube(bestCube)
-print("\nwaktu = ", duration)
 # population = []
 # populationSize = 5
 # population = generateRandomPopulation(populationSize)

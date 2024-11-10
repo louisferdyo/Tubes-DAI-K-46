@@ -220,26 +220,26 @@ def plotObjectiveFunction(objectiveValues):
 
 #----------------------------------------------------------------------------------------
 
-cube = makeCube()
+# cube = makeCube()
 
-print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
+# print("\n\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n")
 
-initialStateRandom(cube)
-printCube(cube)
+# initialStateRandom(cube)
+# printCube(cube)
 
-print("\n\n\n")
-p1 = objectiveFunction(cube)
-print("\nobjective function awal = ", p1)
+# print("\n\n\n")
+# p1 = objectiveFunction(cube)
+# print("\nobjective function awal = ", p1)
 
-print("\n\n\n")
-finalCube, iterationSum, duration, sidewaysSum = sidewaysMove(cube, 10)
+# print("\n\n\n")
+# finalCube, iterationSum, duration, sidewaysSum = sidewaysMove(cube, 10)
 
 
-print("-------------------------------------------------------------------------------")
-printCube(finalCube)
+# print("-------------------------------------------------------------------------------")
+# printCube(finalCube)
 
-p2 = objectiveFunction(finalCube)
-print("\nobjective function akhir = ", p2)
-print("\nbanyaknya iterasi yang dilakukan = ", iterationSum)
-print("\nbanyaknya sideways move yang dilakukan = ", sidewaysSum)
-print("waktu = ", duration)
+# p2 = objectiveFunction(finalCube)
+# print("\nobjective function akhir = ", p2)
+# print("\nbanyaknya iterasi yang dilakukan = ", iterationSum)
+# print("\nbanyaknya sideways move yang dilakukan = ", sidewaysSum)
+# print("waktu = ", duration)
