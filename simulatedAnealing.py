@@ -190,13 +190,10 @@ def simulatedAnnealing(cube, T, coolingRate, threshold) :
     deltaEValues = []
     while T > 0: 
         T -= coolingRate # penurunan temperatur dilakukan dengan dikurangi koefisien penurunan
-        print("\nT : ", T)
-        if T <= 0 :
-            print("Temperatur = 0")
-            break
-       
         i += 1
-        print("Next T : ", T-coolingRate)
+        if T <= 0 :
+            break
+        print("\nT : ", T)
         currentValue = objectiveFunction(cube)
         objectiveValues.append(currentValue)
         cubeTemp = copy.deepcopy(cube)
@@ -207,22 +204,20 @@ def simulatedAnnealing(cube, T, coolingRate, threshold) :
         
         print("current : " , currentValue, " next : ", nextValue)
         deltaE = nextValue - currentValue
-        print("delta E = ", deltaE)
+        print("delta = ", deltaE)
         
         if(deltaE < 0) : # karena yang lebih kecil dari 0 artinya next value lebih kecil dari current yang artinya mengurangi error
             cube = cube2
-            print("DeltaE less than 0, Swap Element")
+            print("less than 0")
         else : 
-            prob = math.exp(-deltaE/ T) # karena error harus lebih kecil maka dikali -1
+            prob = math.exp((-1*deltaE)/ T) # karena error harus lebih kecil maka dikali -1
             deltaEValues.append(prob)
             print("prob = ", prob)
             if(prob > threshold) : 
                 cube = cube2
-                print("Probability more than threshold, Swapped")
+                print("swapped")
             else :
-                print("Probability lower than threshold, Nothing changed")
                 stuck += 1
-        
         # print("hasil akhir : ", objectiveFunction(cube))
     endTime = time.time()
     duration = endTime - startTime

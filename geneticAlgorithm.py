@@ -237,6 +237,7 @@ def geneticAlgorithm(cube, populationSize, maxIteration) :
         for i in range (len(newPopulation)) :
             newPopulation[i] = mutate(newPopulation[i], 0.1)
             individu2 = convertTo3D(newPopulation[i])
+            cube = individu2
             currentObjective = objectiveFunction(individu2)
             currentObjectives.append(currentObjective)
             if(currentObjective < lowestObjective) :
