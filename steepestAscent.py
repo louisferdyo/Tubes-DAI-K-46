@@ -150,7 +150,6 @@ def initialStateRandom(cube):
     for i in range(5):
         for j in range(5):
             for k in range(5):
-                print(f"Type of cube[{i}][{j}] before assignment: {type(cube[i][j])}")
                 found = False
                 while not found:
                     angkaAcak = random.randint(1, 125)
