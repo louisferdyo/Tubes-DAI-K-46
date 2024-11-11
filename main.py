@@ -62,6 +62,7 @@ if pilihan == 1:
         print("\n-> Banyak iterasi yang dilakukan =", iterationSum)
         print("\n-> Banyak sideways move yang dilakukan =", sidewaysSum)
         print("\n-> Waktu =", duration)
+        print()
         
     elif h == 3:
         maxRes = int(input("\n Masukkan Jumlah Restart Maksimal : "))
@@ -74,6 +75,7 @@ if pilihan == 1:
         print(f"\n-> Cube di restart sebanyak {restartCount}")
         print(f"\n-> Iterasi setiap restart adalah sebagai berikut {iterationPerRestart}")
         print("\n-> Waktu =", duration)
+        print()
         
     elif h == 4:
         maxIterate = int(input("\n Masukkan Jumlah Iterasi Maksimal : "))
@@ -85,6 +87,7 @@ if pilihan == 1:
         print("\n-> Objective function akhir =", p2)
         print("\n-> Banyak iterasi yang dilakukan =", iterationSum)
         print("\n-> Waktu =", duration)
+        print()
 
 elif pilihan == 2:
     temp = int(input("\n Masukkan Temperatur Awal : "))
@@ -98,6 +101,7 @@ elif pilihan == 2:
     print("\n-> Objective function akhir =", p2)
     print("\n-> Frekuensi terkena stuck yaitu =", stuck)
     print("\n-> Waktu =", duration)
+    print()
 
 elif pilihan == 3:
     populasi = int(input("\n Masukkan Jumlah Populasi : "))
@@ -117,6 +121,8 @@ elif pilihan == 3:
     print(f"-> Objective function terbaik dari seluruh populasi adalah {objectiveAfter}\n")
     print(f"-> Jumlah iterasi yang dilakukan adalah {iterationSum}\n")
     print("-> Waktu =", duration)
+    print()
+
 
 else:
     print("Input Invalid")
