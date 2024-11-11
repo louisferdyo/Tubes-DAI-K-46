@@ -34,7 +34,14 @@ Di dalam folder 'doc', terdapat sebuah file .pdf yang menjelaskan deskripsi, per
 ## Pembagian Tugas
 | NAMA                  | NIM            | TUGAS                           |
 |-----------------------|----------------|---------------------------------|
-| Louis Ferdyo Gunawan  | 18222022       |              |
+| Louis Ferdyo Gunawan  | 18222022       |  1. Membuat steepest |
+                        |                |  2. Membuat visualisasi 2d |
+                        |                |  3.Melakukan eksperimen & analisis pada hasil eksperimen |
+                        |                |  4. Membuat kesimpulan |                        |
 | Erwan Poltak Halomoan | 18222028       |              |
-| Hartanto Luwis        | 18222064       |              |
+| Hartanto Luwis        | 18222064       |  1. Membuat fungsi-fungsi dasar spt makeCube, random, dst	|
+                        |                |  2. Membuat Simulated Annealing |
+                        |                |  3. Membuat Genetic Algorithm |
+                        |                |  4. Membuat detail fungsi dan penjelasannya di laporan |
+                        |                |  5. Membuat kesimpulan n saran |
 | Ammar Naufal          | 18222066       |              |
