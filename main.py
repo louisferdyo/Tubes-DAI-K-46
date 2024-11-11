@@ -4,6 +4,7 @@ from geneticAlgorithm import geneticAlgorithm
 from randomRestart import randomRestart
 from stochastic import stochastic
 from sidewaysMove import sidewaysMove
+from visual import showInitiateCube, showFinalCube
 
 
 cube = makeCube()
@@ -17,8 +18,8 @@ stateAwal = int(input("Masukkan Kondisi State Awal : "))
 if stateAwal == 2:
     initialStateRandom(cube)
 
-
 printCube(cube)
+showInitiateCube(cube)
 p1 = objectiveFunction(cube)
 print("\n\nObjective Function Awal =", p1)
 
@@ -41,16 +42,19 @@ if pilihan == 1:
 
     if h == 1:
         finalCube, iterationSum, duration = steepestAscent(cube)
+        showFinalCube(finalCube)
         printCube(finalCube)
         p2 = objectiveFunction(finalCube)
         print("\n\nKeterangan : ")
         print("\n-> Objective function akhir =", p2)
         print("\n-> Banyak iterasi yang dilakukan =", iterationSum)
         print("\n-> Waktu =", duration)
+        print()
         
     elif h == 2:
         maxSide = int(input("\n Masukkan Jumlah Sideways Move Maksimal : "))
         finalCube, iterationSum, duration, sidewaysSum = sidewaysMove(cube, maxSide)
+        showFinalCube(finalCube)
         printCube(finalCube)
         p2 = objectiveFunction(finalCube)
         print("\n\nKeterangan : ")
@@ -62,6 +66,7 @@ if pilihan == 1:
     elif h == 3:
         maxRes = int(input("\n Masukkan Jumlah Restart Maksimal : "))
         finalCube, restartCount, iterationPerRestart, duration = randomRestart(cube, maxRes)
+        showFinalCube(finalCube)
         printCube(finalCube)
         p2 = objectiveFunction(finalCube)
         print("\n\nKeterangan : ")
@@ -73,6 +78,7 @@ if pilihan == 1:
     elif h == 4:
         maxIterate = int(input("\n Masukkan Jumlah Iterasi Maksimal : "))
         finalCube, duration, iterationSum = stochastic(cube, maxIterate)
+        showFinalCube(finalCube)
         printCube(finalCube)
         p2 = objectiveFunction(finalCube)
         print("\n\nKeterangan : ")
@@ -85,6 +91,7 @@ elif pilihan == 2:
     coolRate = float(input("\n Masukkan Koefisien Penurunan Temperatur : "))
     thres = float(input("\n Masukkan Batas Probabilitas (parameter pertukaran state pada perhitungan deltaE / T) : "))
     finalCube, stuck, duration = simulatedAnnealing(cube, temp, coolRate, thres)
+    showFinalCube(finalCube)
     printCube(finalCube)
     p2 = objectiveFunction(finalCube)
     print("\n\nKeterangan : ")
@@ -97,9 +104,11 @@ elif pilihan == 3:
     maxIterasi = int(input("\n Masukkan Jumlah Iterasi Maksimal: "))
     finalCube, objectiveAfter, iterationSum, duration, bestCube, lastMin, lastAvg = geneticAlgorithm(cube, populasi, maxIterasi)
     print("\n\nState cube terakhir")
+    showFinalCube(finalCube)
     printCube(finalCube)
 
     print("\n\n\nBest State cube")
+    showFinalCube(bestCube)
     printCube(bestCube)
 
     print("\n\nKeterangan : ")

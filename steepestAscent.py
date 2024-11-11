@@ -4,6 +4,7 @@ import random
 import copy
 import time
 import matplotlib.pyplot as plt
+
 def makeCube():
     cube = [[[0 for i in range(5)] for j in range(5)] for k in range(5)]
     num = 1
@@ -144,19 +145,21 @@ def objectiveFunction(cube) :
     
     return errorSum
 
-def initialStateRandom(cube) :
+def initialStateRandom(cube):
     arrayAngka = []
     for i in range(5):
         for j in range(5):
             for k in range(5):
+                print(f"Type of cube[{i}][{j}] before assignment: {type(cube[i][j])}")
                 found = False
-                while found == False :
-                    angkaAcak = random.randint(1,125)
-                    if(angkaAcak not in arrayAngka) :
+                while not found:
+                    angkaAcak = random.randint(1, 125)
+                    if angkaAcak not in arrayAngka:
                         arrayAngka.append(angkaAcak)
                         cube[i][j][k] = angkaAcak
-                        found = True            
+                        found = True
     return 0
+
 
 def findBestNeighbor(cube) :
     bestCube = copy.deepcopy(cube)
