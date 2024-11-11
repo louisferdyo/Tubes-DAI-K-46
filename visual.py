@@ -13,7 +13,9 @@ def showInitiateCube(cube):
                 y.append(j)
                 z.append(k)
                 text.append(str(cube[i][j][k]))
-    
+    #Angkanya harus dibaca dari bawah dan sudut pandang yang tepat, karena dalam 3D tidak bisa persis membuat sesuai dengan hasil cetakan terminal (2D)
+
+
     fig = go.Figure(data=[go.Scatter3d(
         x=x,
         y=y,
@@ -44,7 +46,8 @@ def showFinalCube(cube):
                 y.append(j)
                 z.append(k)
                 text.append(str(cube[i][j][k]))
-    
+    #Hasil cetakan final dan initiate tetap konsisten walau seperti terlihat berbeda pada cetakan 2D
+
     fig = go.Figure(data=[go.Scatter3d(
         x=x,
         y=y,
