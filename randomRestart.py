@@ -186,11 +186,15 @@ def randomRestart(cube, maxRestart) :
     iterationSum = []
     objectiveValues = []
     condition = True
+    bestValue = 88888
     while condition == True :
         currentValue = objectiveFunction(cube)
         objectiveValues.append(currentValue)
         neigborCube = findBestNeighbor(cube)
         neigborValue = objectiveFunction(neigborCube)
+        if(currentValue < bestValue) :
+            bestCube = cube
+            bestValue = currentValue
         if(neigborValue < currentValue) :
             cube = neigborCube
             i += 1 
@@ -205,7 +209,7 @@ def randomRestart(cube, maxRestart) :
     endTime = time.time()
     duration = endTime - startTime  
     plotObjectiveFunction(objectiveValues)
-    return cube, restartCount, iterationSum, duration
+    return cube, restartCount, iterationSum, duration, bestCube
 
 def plotObjectiveFunction(objectiveValues):
     plt.figure(figsize=(10, 6))

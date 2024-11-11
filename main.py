@@ -66,12 +66,19 @@ if pilihan == 1:
         
     elif h == 3:
         maxRes = int(input("\n Masukkan Jumlah Restart Maksimal : "))
-        finalCube, restartCount, iterationPerRestart, duration = randomRestart(cube, maxRes)
+        finalCube, restartCount, iterationPerRestart, duration, bestCube= randomRestart(cube, maxRes)
+        print("\n\n State Terakhir : ")
         showFinalCube(finalCube)
         printCube(finalCube)
+
+        print("\n\n State Terbaik : ")
+        showFinalCube(bestCube)
+        printCube(bestCube)
         p2 = objectiveFunction(finalCube)
+        p3 = objectiveFunction(bestCube)
         print("\n\nKeterangan : ")
         print("\n-> Objective function akhir =", p2)
+        print("\n-> Objective function terbaik =", p3)
         print(f"\n-> Cube di restart sebanyak {restartCount}")
         print(f"\n-> Iterasi setiap restart adalah sebagai berikut {iterationPerRestart}")
         print("\n-> Waktu =", duration)
