@@ -29,7 +29,7 @@ def showInitiateCube(cube):
         yaxis=dict(nticks=5, range=[-1, 5], showticklabels=False, showgrid=False, showline=False, showbackground=False),
         zaxis=dict(nticks=5, range=[-1, 5], showticklabels=False, showgrid=False, showline=False, showbackground=False),
     ),
-    title="Magic Cube Initial State - Kelompok 46",
+    title="Initial State Magic Cube - Kelompok 46",
     margin=dict(l=0, r=0, b=0, t=30)) 
 
     fig.show()
@@ -60,7 +60,7 @@ def showFinalCube(cube):
         yaxis=dict(nticks=5, range=[-1, 5], showticklabels=False, showgrid=False, showline=False, showbackground=False),
         zaxis=dict(nticks=5, range=[-1, 5], showticklabels=False, showgrid=False, showline=False, showbackground=False),
     ),
-    title="Magic Cube Final State - Kelompok 46",
+    title="Final State Magic Cube - Kelompok 46",
     margin=dict(l=0, r=0, b=0, t=30)) 
 
     fig.show()
