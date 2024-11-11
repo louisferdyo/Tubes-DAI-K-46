@@ -17,11 +17,14 @@ Algoritma local search yang kami gunakan untuk mencari solusi diagonal magic cub
 5. Genetic Algorithm
 6. Simulated Annealing
 
-Bahasa pemograman yang digunakan untuk pembuatan algoritma local search kami adalah python, visualisasi plot menggunakan matplotlib, visualisasi kubus menggunakan plotly, juga library math & numpy untuk kalkulasi perhitungan
+Bahasa pemograman yang digunakan untuk pembuatan algoritma local search kami adalah python, 
+visualisasi plot menggunakan matplotlib, 
+visualisasi kubus menggunakan plotly, 
+juga library math & numpy untuk kalkulasi perhitungan
 
 ## Cara menjalankan
 1. Clone repo ini dengan mengetikkan command " git clone https://github.com/louisferdyo/Tubes-DAI-K-46"
-2. pindah ke folder src dengan cara "cd src"
+2. pindah ke folder 'src'
 3. Jalankan program main.py dengan cara "python main.py"
 4. pilih algoritma yang ingin dicoba untuk menyelesaikan pencarian solusi diagonal magic cube
 
@@ -29,9 +32,9 @@ Bahasa pemograman yang digunakan untuk pembuatan algoritma local search kami ada
 Di dalam folder 'doc', terdapat sebuah file .pdf yang menjelaskan deskripsi, persoalan, hasil eksperimen, analisis, pembahasan, juga kesimpulan berupa algoritma terbaik menurut kami.
 
 ## Pembagian Tugas
-| Name                  | NIM            | Task                           |
-|---------------        |----------------|--------------------------------|
+| NAMA                  | NIM            | TUGAS                           |
+|-----------------------|----------------|---------------------------------|
 | Louis Ferdyo Gunawan  | 18222022       |              |
-| Erwan Poltak Halomoan | 18222028       |            |
-| Hartanto Luwis        | 18222064       |  |
-| Ammar Naufal          | 18222066       |  |
+| Erwan Poltak Halomoan | 18222028       |              |
+| Hartanto Luwis        | 18222064       |              |
+| Ammar Naufal          | 18222066       |              |
