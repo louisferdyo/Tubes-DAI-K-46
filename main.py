@@ -4,7 +4,7 @@ from geneticAlgorithm import geneticAlgorithm
 from randomRestart import randomRestart
 from stochastic import stochastic
 from sidewaysMove import sidewaysMove
-from visual import showInitiateCube, showFinalCube
+from visual import showInitiateCube, showFinalCube, showBestCube
 
 
 cube = makeCube()
@@ -119,7 +119,7 @@ elif pilihan == 3:
     printCube(finalCube)
 
     print("\n\n\nBest State cube")
-    showFinalCube(bestCube)
+    showBestCube(bestCube)
     printCube(bestCube)
 
     print("\n\nKeterangan : ")
